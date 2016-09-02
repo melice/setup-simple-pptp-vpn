@@ -69,6 +69,7 @@ sed -i '/^exit 0/d' /etc/rc.local
 cat >> /etc/rc.local << END
 echo 1 > /proc/sys/net/ipv4/ip_forward
 #control channel
+iptables -I INPUT -p tcp --dport 22 -j ACCEPT
 iptables -I INPUT -p tcp --dport 1723 -j ACCEPT
 #gre tunnel protocol
 iptables -I INPUT  --protocol 47 -j ACCEPT
